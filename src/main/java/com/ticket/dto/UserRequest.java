@@ -39,6 +39,7 @@ public class UserRequest {
 	@Builder
 	@Schema
 	public static class RoleDto {
+		@Schema(example = "null")
 		private Integer id;
 		private String name;
 	}

@@ -1,5 +1,6 @@
 package com.ticket.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class TicketRequest {
 
+	@Schema(example = "null")
 	private Integer id;
 
 	@NotEmpty
@@ -27,9 +29,11 @@ public class TicketRequest {
 	private String description;
 
 	@NotNull
+	@Schema(example = "null")
 	private Integer priority;
 
 	@NotNull
+	@Schema(example = "null")
 	private Integer status;
 
 	@NotNull
@@ -42,6 +46,7 @@ public class TicketRequest {
 	@NoArgsConstructor
 	@Data
 	public static class DepartmentDto {
+		@Schema(example = "null")
 		private Integer id;
 		private String name;
 	}
