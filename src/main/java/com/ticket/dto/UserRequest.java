@@ -2,6 +2,7 @@ package com.ticket.dto;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,6 +16,7 @@ import lombok.Setter;
 @Builder
 public class UserRequest {
 
+	@Schema(example = "null")
 	private Integer id;
 
 	private String firstName;
@@ -27,6 +29,7 @@ public class UserRequest {
 
 	private String password;
 
+	@Schema(description = "Role data for the user")
 	private List<RoleDto> roles;
 
 	@AllArgsConstructor
@@ -34,6 +37,7 @@ public class UserRequest {
 	@Getter
 	@Setter
 	@Builder
+	@Schema
 	public static class RoleDto {
 		private Integer id;
 		private String name;

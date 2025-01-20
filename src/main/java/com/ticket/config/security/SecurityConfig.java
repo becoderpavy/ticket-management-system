@@ -50,6 +50,9 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(req -> req
 				.requestMatchers("/api/v1/home/**", "/api/v1/auth/**").permitAll()
+				
+				.requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").permitAll()
+				
 				.anyRequest().authenticated())
 				.httpBasic(Customizer.withDefaults())
 				.sessionManagement(session->
@@ -58,5 +61,5 @@ public class SecurityConfig {
 
 		return http.build();
 	}
-
+// http://localhost:8080/swagger-ui/index.html
 }

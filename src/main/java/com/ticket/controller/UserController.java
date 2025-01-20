@@ -14,9 +14,6 @@ import com.ticket.entity.User;
 import com.ticket.service.UserService;
 import com.ticket.util.CommonUtil;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @RestController
 public class UserController implements UserEndpoint {
 

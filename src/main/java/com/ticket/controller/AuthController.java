@@ -15,25 +15,21 @@ import com.ticket.service.AuthService;
 import com.ticket.util.CommonUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @RestController
-public class AuthController implements AuthEndpoint{
+public class AuthController implements AuthEndpoint {
 
 	@Autowired
 	private AuthService authService;
 
 	@Override
-	public ResponseEntity<?> registerUser(@RequestBody UserRequest userDto, HttpServletRequest request) throws Exception {
-		log.info("AuthController : registerUser() : Exceution Start");
+	public ResponseEntity<?> registerUser(UserRequest userDto, HttpServletRequest request)
+			throws Exception {
 		String url = CommonUtil.getUrl(request);
 		Boolean register = authService.register(userDto, url);
 		if (!register) {
-			log.info("Error : {}","Register failed");
 			return CommonUtil.createErrorResponseMessage("Register failed", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		log.info("AuthController : registerUser() : Exceution End");
 		return CommonUtil.createBuildResponseMessage("Register success", HttpStatus.CREATED);
 	}
 
@@ -44,7 +40,7 @@ public class AuthController implements AuthEndpoint{
 		if (ObjectUtils.isEmpty(loginResponse)) {
 			return CommonUtil.createErrorResponseMessage("invalid credential", HttpStatus.BAD_REQUEST);
 		}
-		return CommonUtil.createBuildResponse(loginResponse,HttpStatus.OK);
+		return CommonUtil.createBuildResponse(loginResponse, HttpStatus.OK);
 	}
 
 }

@@ -3,7 +3,6 @@ package com.ticket.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ticket.dto.PswdResetRequest;
@@ -25,14 +24,11 @@ public class HomeController implements HomeEndpoint {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/verify")
+	@Override
 	public ResponseEntity<?> verifyUserAccount(String uid, String code) throws Exception {
-		log.info("HomeController : verifyUserAccount() : Exceution Start");
 		Boolean verifyAccount = homeService.verifyAccount(Integer.parseInt(uid), code);
 		if (verifyAccount)
 			return CommonUtil.createBuildResponseMessage("Account verification success", HttpStatus.OK);
-
-		log.info("HomeController : verifyUserAccount() : Exceution End");
 		return CommonUtil.createErrorResponseMessage("Invalid Verification link", HttpStatus.BAD_REQUEST);
 	}
 

@@ -11,7 +11,7 @@ import com.ticket.dto.UserRequest;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RequestMapping("/api/v1/auth")
-public interface AuthEndpoint {
+public interface AuthEndpoint{
 
 	@PostMapping("/register")
 	public ResponseEntity<?> registerUser(@RequestBody UserRequest userDto, HttpServletRequest request)
